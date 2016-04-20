@@ -1,10 +1,16 @@
 import React from 'react';
 
-const Layout = ({content = () => null }) => (
+const Layout = ({header = () => null , content = () => null, footer = () => null }) => (
   <div>
-    <div>
+    <header>
+      {header()}
+    </header>
+    <main>
       {content()}
-    </div>
+    </main>
+    <footer>
+      {footer()}
+    </footer>
   </div>
 );
 

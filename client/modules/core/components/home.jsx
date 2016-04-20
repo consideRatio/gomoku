@@ -1,20 +1,24 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Home = () => (
-  <div>
-    <h1>Mantra</h1>
-    <p>
-      Welcome to Mantra 0.2.0.
-    </p>
-    <ul>
-      <li>
-        Read <a target="_blank" href="https://kadirahq.github.io/mantra/">spec</a>
-      </li>
-      <li>
-        Learn <a target="_blank" href="https://github.com/sungwoncho/mantra-cli#commands">CLI</a>
-      </li>
-    </ul>
-  </div>
-);
+export default class Home extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Home (Logged out)</h1>
 
-export default Home;
+        <h2>Sign up / Login</h2>
+        <ul>
+            <li>Username / password</li>
+        </ul>
+
+        <h2>Welcome</h2>
+        This is Gomoku (animation)
+
+        <h2>Rules</h2>
+        <ul>
+            <li>Win by getting 5 or more in a row (Free-style gomoku)</li>
+        </ul>
+      </div>
+    );
+  }
+}
