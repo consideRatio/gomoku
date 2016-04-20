@@ -1,6 +1,4 @@
 import React from 'react';
-import {mount} from 'react-mounter';
-import {Accounts} from 'meteor/std:accounts-ui';
 
 import MainLayout from './components/main_layout.jsx';
 import Header from './components/header.jsx';
@@ -9,12 +7,19 @@ import Home from './components/home.jsx';
 import Lobby from './components/lobby.jsx';
 import Game from './components/game.jsx';
 
+import {mount as mountOriginal, withOptions} from 'react-mounter';
+const mount = withOptions({
+    rootId: 'react-root'
+    // rootProps: {'className': 'some-class-name'}
+}, mountOriginal);
+
+import {Accounts} from 'meteor/std:accounts-ui';
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_ONLY',
   loginPath: '/',
-  minimumPasswordLength: 1,
-  onSignedInHook: () => FlowRouter.go('/lobby'),
-  onSignedOutHook: () => FlowRouter.go('/')
+  minimumPasswordLength: 1
+  // onSignedInHook: () => FlowRouter.go('/lobby'),
+  // onSignedOutHook: () => FlowRouter.go('/')
 });
 
 export default function (injectDeps, {FlowRouter}) {

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 export default class UserList extends Component {
   render() {
+    // TODO: Fetch actual data
     return (
       <div>
         <ul>
