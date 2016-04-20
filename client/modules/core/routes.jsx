@@ -1,10 +1,21 @@
 import React from 'react';
 import {mount} from 'react-mounter';
+import {Accounts} from 'meteor/std:accounts-ui';
 
 import MainLayout from './components/main_layout.jsx';
+import Header from './components/header.jsx';
+import Footer from './components/footer.jsx';
 import Home from './components/home.jsx';
 import Lobby from './components/lobby.jsx';
 import Game from './components/game.jsx';
+
+Accounts.ui.config({
+  passwordSignupFields: 'USERNAME_ONLY',
+  loginPath: '/',
+  minimumPasswordLength: 1,
+  onSignedInHook: () => FlowRouter.go('/lobby'),
+  onSignedOutHook: () => FlowRouter.go('/')
+});
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
@@ -13,7 +24,9 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'home',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<Home />)
+        header: () => (<Header />),
+        content: () => (<Home />),
+        footer: () => (<Footer />)
       });
     }
   });
@@ -22,7 +35,9 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'lobby',
     action() {
       mount(MainLayoutCtx, {
-        content: () => (<Lobby />)
+        header: () => (<Header />),
+        content: () => (<Lobby />),
+        footer: () => (<Footer />)
       });
     }
   });
@@ -31,7 +46,9 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'game',
     action({_id}) {
       mount(MainLayoutCtx, {
-        content: () => (<Game gameId={_id} />)
+        header: () => (<Header />),
+        content: () => (<Game gameId={_id} />),
+        footer: () => (<Footer />)
       });
     }
   });

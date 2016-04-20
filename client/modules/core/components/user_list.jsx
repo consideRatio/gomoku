@@ -4,7 +4,12 @@ export default class UserList extends Component {
   render() {
     return (
       <div>
-        UserList
+        <ul>
+          <li style={{color: 'green'}}>Arne / Online / <button>Challenge</button></li>
+          <li style={{color: 'orange'}}>Lisa / Inactive / <button>Challenge</button></li>
+          <li style={{color: 'red'}}>Kalle / In game / <button disabled>Challenge</button></li>
+          <li style={{display: 'none'}}>Olov / Offline</li>
+        </ul>
       </div>
     );
   }
