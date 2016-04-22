@@ -2,14 +2,17 @@ import React, {Component} from 'react';
 
 export default class UserList extends Component {
   render() {
-    // TODO: Fetch actual data
+    users = this.props.users.map((user) => (
+      <li key={user._id}>
+        {user.username}
+        <button>Challenge</button>
+      </li>
+    ));
+
     return (
       <div>
         <ul>
-          <li style={{color: 'green'}}>Arne / Online / <button>Challenge</button></li>
-          <li style={{color: 'orange'}}>Lisa / Inactive / <button>Challenge</button></li>
-          <li style={{color: 'red'}}>Kalle / In game / <button disabled>Challenge</button></li>
-          <li style={{display: 'none'}}>Olov / Offline</li>
+          {users}
         </ul>
       </div>
     );

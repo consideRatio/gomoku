@@ -1,7 +1,7 @@
-import game from './game';
-import account from './account';
+import games from './games';
+import users from './users';
 
 export default {
-  game,
-  account
+  games,
+  users
 };

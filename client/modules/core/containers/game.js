@@ -6,7 +6,6 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
   // TODO: Subscribe to data from gameId!
-
   onData(null, {});
 
   return () => {
