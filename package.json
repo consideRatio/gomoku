@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.3",
     "eslint": "2.7.x",
     "eslint-plugin-react": "4.3.x",
     "mantra-core": "^1.2.0",
