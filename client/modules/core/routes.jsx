@@ -53,8 +53,7 @@ export default function (injectDeps, {FlowRouter}) {
     action({_id}) {
       mount(MainLayoutCtx, {
         header: () => (<Header />),
-        content: () => (<Game />),
-        footer: () => (<Footer />)
+        content: () => (<Game />)
       });
     }
   });
