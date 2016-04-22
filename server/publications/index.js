@@ -1,7 +1,7 @@
-import userList from './user_list';
-import gameList from './game_list';
+import users from './users';
+import games from './games';
 
 export default function () {
-  userList();
-  gameList();
+  users();
+  games();
 }

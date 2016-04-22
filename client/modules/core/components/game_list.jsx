@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class GameList extends Component {
+export default class GameList extends React.Component {
   render() {
     const games = this.props.games.map((game) => {
       return {

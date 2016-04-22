@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Meteor} from 'meteor/meteor';
 
-export default class Header extends Component {
+export default class Header extends React.Component {
   render() {
     return (
       <div>

@@ -6,16 +6,19 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
   // Subscribe to user data!
-  if (Meteor.subscribe('userList.allUsersExcept', null).ready()) {
-    const options = {
-      sort: {username: 1}
+  if (Meteor.subscribe('users.allUserSummaries').ready()) {
+    const query = {
+      _id: {$ne: Meteor.userId()}
     };
+    const options = {
+      sort: {username: 1},
+    };
+    const users = Collections.Users.find(query, options).fetch();
 
-    const users = Collections.Users.find({}, options).fetch();
     onData(null, {users});
   } else {
-    onData(); // Loading in case of empty
-    // onData(null, {}); //
+    onData(); // Loading if no results were returned
+    // onData(null, {});
   }
 
   // Container disposal, unsubscribe here?
