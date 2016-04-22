@@ -2,21 +2,25 @@ import React from 'react';
 
 import Intersection from './intersection';
 
+import _ from 'lodash/array';
+
 export default class Board extends React.Component {
   generateBoard() {
     let arr = [];
     const count = Math.pow(this.props.size, 2);
 
     for (let i = 0; i < count; i++) {
-      arr.push((<Intersection key={i}>{i}</Intersection>));
+      const moveIndex = _.findIndex(this.props.moves, (move) => move.intersection == i);
+
+      if (moveIndex !== -1) {
+        const move = this.props.moves[moveIndex];
+        arr.push((<Intersection key={i} move={move} moveIndex={moveIndex} />));
+      } else {
+        arr.push((<Intersection key={i} />));
+      }
     }
 
     return arr;
-  }
-  renderBoard() {
-    console.log(this.generateBoard());
-    console.log(...this.generateBoard());
-    return this.generateBoard();
   }
 
 
@@ -24,8 +28,9 @@ export default class Board extends React.Component {
     return (
       <div>
         <p>Board {this.props.size}</p>
-
-      {this.generateBoard()}
+        <div className="gomoku-board">
+          {this.generateBoard()}
+        </div>
       </div>
     );
   }

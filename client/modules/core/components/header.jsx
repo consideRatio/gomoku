@@ -8,7 +8,7 @@ export default class Header extends React.Component {
         /
         <a href="/lobby">Lobby</a>
         /
-        <a href="/game/5717de2de056ab31d0df712c">The game</a>
+        <a href="/game/571a3cb104c8b90f0f14cbd6">The game</a>
       </div>
     );
   }

@@ -15,6 +15,7 @@
     "classnames": "^2.2.3",
     "eslint": "2.7.x",
     "eslint-plugin-react": "4.3.x",
+    "lodash": "^4.11.1",
     "mantra-core": "^1.2.0",
     "moment": "^2.13.0",
     "react": "^0.14.7",

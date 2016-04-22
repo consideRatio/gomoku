@@ -23,7 +23,7 @@ export default class Game extends React.Component {
           <span>{game.players[1].username} (O)</span>
         </h1>
 
-        <Board moves={game.moves} size={5} />
+        <Board moves={game.moves} size={19} />
 
         <small>
           <p>

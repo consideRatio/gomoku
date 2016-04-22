@@ -4,14 +4,16 @@ import cn from 'classnames';
 
 export default class Intersection extends React.Component {
   render() {
-    const classNames = cn({
-      
+    console.log(this.props.move);
+
+    const svgClassNames = cn({
+      stone: !!this.props.move
     });
 
     return (
-      <div>
-        {this.props.children}
-      </div>
+      <svg className={svgClassNames}>
+        <use xlinkHref={this.props.moveIndex % 2 == 0 ? '#black' : '#white'} />
+      </svg>
     );
   }
 }
