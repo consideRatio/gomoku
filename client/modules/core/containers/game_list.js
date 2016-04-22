@@ -20,10 +20,8 @@ export const composer = ({context}, onData) => {
     onData();
   }
 
-  // Container disposal, unsubscribe here?
-  return () => {
-    console.log('Container disposed!');
-  }
+  // Return a container disposal function
+  return () => {};
 };
 
 export const depsMapper = (context, actions) => {

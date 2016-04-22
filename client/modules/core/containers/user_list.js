@@ -21,8 +21,8 @@ export const composer = ({context}, onData) => {
     // onData(null, {});
   }
 
-  // Container disposal, unsubscribe here?
-  return () => {null}
+  // Return a container disposal function
+  return () => {};
 };
 
 export const depsMapper = (context, actions) => {

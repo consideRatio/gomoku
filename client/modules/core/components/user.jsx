@@ -4,7 +4,8 @@ export default class User extends React.Component {
   render() {
     return (
       <div>
-        User
+        {this.props.user.username}
+        <button>Challenge</button>
       </div>
     );
   }

@@ -5,7 +5,8 @@ import Header from './components/header.jsx';
 import Footer from './components/footer.jsx';
 import Home from './components/home.jsx';
 import Lobby from './components/lobby.jsx';
-import Game from './components/game.jsx';
+
+import Game from './containers/game.js';
 
 import {mount as mountOriginal, withOptions} from 'react-mounter';
 const mount = withOptions({
@@ -52,7 +53,7 @@ export default function (injectDeps, {FlowRouter}) {
     action({_id}) {
       mount(MainLayoutCtx, {
         header: () => (<Header />),
-        content: () => (<Game gameId={_id} />),
+        content: () => (<Game />),
         footer: () => (<Footer />)
       });
     }

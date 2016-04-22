@@ -4,14 +4,23 @@ import {check} from 'meteor/check';
 
 export default function () {
   Meteor.publish('games.allGameSummaries', function () {
-    // TODO: Show only active ones
-    // (EndDate not set)
-    // TODO: Pass only relevant fields
-    // Not moves etc.
-    return Games.find({});
+    return Games.find(
+      {
+        // Show only active ones
+        endDate: {$exists: false}
+      },
+      {
+        fields: {
+          // Pass only relevant information
+          _id: true,
+          startDate: true,
+          players: true
+        }
+      }
+    );
   });
 
   Meteor.publish('games.single', function (gameId) {
-    return Game.find(gameId);
+    return Games.find({_id: gameId});
   });
 }

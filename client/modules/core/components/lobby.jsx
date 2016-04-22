@@ -1,16 +1,13 @@
 import React from 'react';
-import UserListContainer from '../containers/user_list.js';
-import GameListContainer from '../containers/game_list.js';
-// import UserListComponent from './user_list.jsx';
-
-// const UserList = UserListContainer(UserListComponent);
+import UserList from '../containers/user_list.js';
+import GameList from '../containers/game_list.js';
 
 const Lobby = () => (
   <div>
     <h2>Users</h2>
-    <UserListContainer />
+    <UserList />
     <h2>Games</h2>
-    <GameListContainer />
+    <GameList />
   </div>
 );
 
