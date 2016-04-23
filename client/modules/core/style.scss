@@ -11,13 +11,13 @@
 // Customizable
 $cols: 19;
 
-$color-background: #ccc;
-$color-border: black;
-$color-stone-black: darkblue;
-$color-stone-white: darkred;
+$color-background: #CCC;
+$color-border: #333;
+$color-stone-black: #F00;
+$color-stone-white: #00F;
 
 $gutters-relative: 1;
-$gutter-relative-width: 1/10;
+$gutter-relative-width: 1/20;
 
 // Calculated
 $col-width: percentage(1 / ($cols + ($cols + $gutters-relative) * $gutter-relative-width));
@@ -71,11 +71,11 @@ $gutter-width: $col-width * $gutter-relative-width;
 
 #black, #white {
     fill: none;
-    stroke-width: 10%;
+    stroke-width: 20%;
     stroke-linecap: round;
 }
 #black {
-    stroke: $color-stone-black ;
+    stroke: $color-stone-black;
 }
 #white {
     stroke: $color-stone-white;
