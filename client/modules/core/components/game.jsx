@@ -1,7 +1,9 @@
 import React from 'react';
 import Moment from 'moment';
+import _string from 'lodash/string';
 
 import Board from './board';
+
 
 export default class Game extends React.Component {
   getDateFormatted (date) {
@@ -10,6 +12,9 @@ export default class Game extends React.Component {
         return Moment(date).format('LL');
       else
         return null;
+  }
+
+  handleClick(gameId, intersection) {
   }
 
   render() {
@@ -23,7 +28,7 @@ export default class Game extends React.Component {
           <span>{game.players[1].username} (O)</span>
         </h1>
 
-        <Board moves={game.moves} size={19} />
+        <Board moves={game.moves} size={19} onClick={this.props.makeMove.bind(undefined, game._id)}/>
 
         <small>
           <p>

@@ -22,7 +22,8 @@ export const composer = ({context}, onData) => {
 };
 
 export const depsMapper = (context, actions) => ({
-  context: () => context
+  context: () => context,
+  makeMove: actions.games.makeMove
 });
 
 export default composeAll(

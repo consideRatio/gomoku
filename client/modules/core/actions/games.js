@@ -1,10 +1,7 @@
 export default {
-  getGames({Meteor, Collections}) {
-    return Collections.Games.find({})
-  },
-
-  playStone({Meteor}, gameId, intersection) {
-    console.log("placeStone", gameId, intersection);
+  makeMove({Meteor}, gameId, intersection) {
+    console.log("makeMove", gameId, intersection);
+    Meteor.call('games.makeMove', gameId, intersection);
   },
   enter({Meteor}, gameId, black) {
     console.log("enter", gameId, black);
