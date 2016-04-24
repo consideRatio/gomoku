@@ -23,15 +23,23 @@ export default class Home extends React.Component {
           </div>
           <div className="mdl-card__actions mdl-card--border">
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ref="txtUsernameContainer">
-              <input className="mdl-textfield__input" id="txtUsername" />
+              <input
+                className="mdl-textfield__input"
+                id="txtUsername"
+                pattern="//"
+              />
               <label className="mdl-textfield__label" htmlFor="txtUsername">Enter username...</label>
+              <span class="mdl-textfield__error">Invalid username!</span>
             </div>
             <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" ref="txtPasswordContainer">
-              <input className="mdl-textfield__input" id="txtPassword" type="password"
+              <input
+                className="mdl-textfield__input"
+                id="txtPassword"
+                type="password"
                 pattern="//"
               />
               <label className="mdl-textfield__label" htmlFor="txtPassword">Enter password...</label>
-              <span class="mdl-textfield__error">Input is not a number!</span>
+              <span class="mdl-textfield__error">Invalid password!</span>
             </div>
 
             <div>
@@ -49,5 +57,3 @@ export default class Home extends React.Component {
     );
   }
 }
-
-//
