@@ -1,10 +1,10 @@
 import React from 'react';
 
 import MainLayout from './components/main_layout';
-import Home from './components/home';
 import About from './components/about';
 import Lobby from './components/lobby';
 
+import Home from './containers/home';
 import Game from './containers/game';
 
 import {mount as mountOriginal, withOptions} from 'react-mounter';
@@ -58,6 +58,16 @@ export default function (injectDeps, {FlowRouter}) {
       mount(MainLayoutCtx, {
         content: () => (<Game />)
       });
+    }
+  });
+
+  FlowRouter.route('/logout', {
+    name: 'app.logout',
+    action() {
+      Accounts.logout();
+      // Meteor.logout(() => {
+      FlowRouter.go('/login');
+      // });
     }
   });
 }

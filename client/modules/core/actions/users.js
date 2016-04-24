@@ -1,29 +1,20 @@
 export default {
-  test({Meteor}) {
-    console.log("Executing test action!");
-    console.log(Meteor.user().username);
-  },
 
+  signIn({Meteor, LocalState, FlowRouter, Accounts}, username, password) {
 
+    console.log("action: SIGN IN CALLED!");
 
-
-
-
-
-
-  login({Meteor, LocalState, FlowRouter, Accounts}, email, password) {
-
-    if (!email || !password) {
-      return LocalState.set('LOGIN_ERROR', 'Login & Password are required!');
+    if (!username || !password) {
+      return LocalState.set('LOGIN_ERROR', 'Username & Password are required!');
     }
 
     LocalState.set('LOGIN_ERROR', null);
 
-    Meteor.loginWithPassword(email, password, (err) => {
+    Meteor.loginWithPassword(username, password, (err) => {
       if (err && err.reason) {
         return LocalState.set('LOGIN_ERROR', err.reason);
       }
-      FlowRouter.go('/lobby');
+      // FlowRouter.go('/account');
     });
 
   },
@@ -32,25 +23,28 @@ export default {
     return LocalState.set('LOGIN_ERROR', null);
   },
 
-  register({Meteor, LocalState, FlowRouter, Accounts}, email, password1, password2) {
+  signOut({Accounts}) {
+    Accounts.logout();
+  },
 
-    if (!email || !password1 || !password2) {
+  signUp({Meteor, LocalState, FlowRouter, Accounts}, username, password) {
+
+    console.log("action: SIGN UP CALLED!");
+
+    if (!username || !password) {
       return LocalState.set('REGISTER_ERROR', 'Please fill out all the required fileds!');
     }
 
-    if (password1 !== password2 ) {
-      return LocalState.set('REGISTER_ERROR', 'Passwords do not match!');
-    }
-
-    Accounts.createUser({email, password: password1}, (err) => {
+    Accounts.createUser({username, password}, (err) => {
       if (err && err.reason) {
         return LocalState.set('REGISTER_ERROR', err.reason);
       }
-      FlowRouter.go('/lobby');
+      // FlowRouter.go('/account');
     });
   },
 
   registerErrorClear({LocalState}) {
     return LocalState.set('REGISTER_ERROR', null);
   },
-}
+
+};

@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/reponame.git"
+    "url": "git+https://github.com/considerato/gomoku.git"
   },
   "author": "",
   "license": "ISC",

@@ -11,3 +11,7 @@ const About = () => (
 );
 
 export default About;
+
+// SASS
+// Buildhorse https://github.com/AdmitHub/meteor-buildpack-horse
+// Material UI Lite
