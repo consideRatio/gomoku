@@ -1,8 +1,28 @@
 // @import 'susy/sass/_susy';
 // @import 'bootstrap/scss/bootstrap';
 
+$page-padding: 16px;
+
 .svg-definition {
     display: none;
+}
+
+.container {
+    padding: 0 $page-padding;
+}
+
+.game-header {
+    text-align: center;
+}
+
+
+.mdl-layout__header-row {
+    padding-left: $page-padding !important;
+    padding-right: 0 !important;
+}
+
+.mdl-navigation > a:last-child {
+    padding-right: $page-padding !important;
 }
 
 // Gomoku styling
@@ -11,10 +31,11 @@
 // Customizable
 $cols: 19;
 
-$color-background: #CCC;
-$color-border: #333;
-$color-stone-black: #F00;
-$color-stone-white: #00F;
+$color-background: lighten(rgb(121,85,72), 25%);
+$color-border: darken($color-background, 75%);
+$color-stone-border: #333;
+$color-stone-black: #000;
+$color-stone-white: #fff;
 
 $gutters-relative: 1;
 $gutter-relative-width: 1/20;
@@ -29,8 +50,10 @@ $gutter-width: $col-width * $gutter-relative-width;
 }
 
 .gomoku-board {
-    width: calc(100vw - 2 * 0.9375rem);
-    height: calc(100vw - 2 * 0.9375rem);
+    // WARNING: A hack, vw is a messy unit...
+    width: calc(100vw - 2 * #{$page-padding});
+    height: calc(100vw - 2 * #{$page-padding});
+    margin: 0 auto;
 
     background-color: $color-border;
 
@@ -69,17 +92,30 @@ $gutter-width: $col-width * $gutter-relative-width;
     }
 }
 
+// Stones...
 #black, #white {
-    fill: none;
-    stroke-width: 20%;
-    stroke-linecap: round;
+    stroke: $color-stone-border;
+    stroke-width: 1%;
 }
 #black {
-    stroke: $color-stone-black;
+    fill: $color-stone-black;
 }
 #white {
-    stroke: $color-stone-white;
+    fill: $color-stone-white;
 }
+
+// Crosses...
+// #black, #white {
+//     fill: none;
+//     stroke-width: 20%;
+//     stroke-linecap: round;
+// }
+// #black {
+//     stroke: $color-stone-black;
+// }
+// #white {
+//     stroke: $color-stone-white;
+// }
 
 // Clearfix
 // --------

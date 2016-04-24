@@ -1,12 +1,11 @@
 import React from 'react';
 
-import MainLayout from './components/main_layout.jsx';
-import Header from './components/header.jsx';
-import Footer from './components/footer.jsx';
-import Home from './components/home.jsx';
-import Lobby from './components/lobby.jsx';
+import MainLayout from './components/main_layout';
+import Home from './components/home';
+import About from './components/about';
+import Lobby from './components/lobby';
 
-import Game from './containers/game.js';
+import Game from './containers/game';
 
 import {mount as mountOriginal, withOptions} from 'react-mounter';
 const mount = withOptions({
@@ -30,9 +29,16 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'home',
     action() {
       mount(MainLayoutCtx, {
-        header: () => (<Header />),
-        content: () => (<Home />),
-        footer: () => (<Footer />)
+        content: () => (<Home />)
+      });
+    }
+  });
+
+  FlowRouter.route('/about', {
+    name: 'about',
+    action() {
+      mount(MainLayoutCtx, {
+        content: () => (<About />)
       });
     }
   });
@@ -41,9 +47,7 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'lobby',
     action() {
       mount(MainLayoutCtx, {
-        header: () => (<Header />),
-        content: () => (<Lobby />),
-        footer: () => (<Footer />)
+        content: () => (<Lobby />)
       });
     }
   });
@@ -52,7 +56,6 @@ export default function (injectDeps, {FlowRouter}) {
     name: 'game',
     action({_id}) {
       mount(MainLayoutCtx, {
-        header: () => (<Header />),
         content: () => (<Game />)
       });
     }

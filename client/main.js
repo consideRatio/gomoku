@@ -4,6 +4,10 @@ import initContext from './configs/context';
 // modules
 import coreModule from './modules/core';
 
+// Material-UI (npm) temporary complication
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 // init context
 const context = initContext();
 
