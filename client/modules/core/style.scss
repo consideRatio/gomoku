@@ -3,18 +3,28 @@
 
 $page-padding: 16px;
 
+
+
+.demo-card-wide.mdl-card {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 0;
+  max-width: 640px;
+}
+
+
+
 .svg-definition {
     display: none;
 }
 
 .container {
-    padding: 0 $page-padding;
+    margin: $page-padding $page-padding 0 $page-padding;
 }
 
 .game-header {
     text-align: center;
 }
-
 
 .mdl-layout__header-row {
     padding-left: $page-padding !important;
