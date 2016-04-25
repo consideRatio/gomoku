@@ -24,7 +24,6 @@ check
 accounts-password
 
 kadira:flow-router
-std:accounts-ui
 meteortoys:allthings
 aldeed:collection2
 fourseven:scss@=3.4.2

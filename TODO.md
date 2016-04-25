@@ -1,10 +1,13 @@
 # Personligt idag
 Skicka brev till Annika och Kalle
-Köpa timjan
 
 SENARE: Boende fontan
 
 # Kod
-Interaktion för knapptryckningar etc
-
-MDL-grid position sign in form etc
+Create challenges collection
+Add challenges in server method
+... invoked through client action
+... removed after delay through setInterval
+... removed on server startup
+Publish challenges for logged in user
+Subscribe to such challenges

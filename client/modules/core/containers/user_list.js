@@ -1,6 +1,8 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import UserList from '../components/user_list.jsx';
+import UserList from '../components/user_list';
+
+// TODO: Disable challenge button when you are not logged in
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();

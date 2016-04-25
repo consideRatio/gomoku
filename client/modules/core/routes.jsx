@@ -13,14 +13,13 @@ const mount = withOptions({
     // rootProps: {'className': 'some-class-name'}
 }, mountOriginal);
 
-import {Accounts} from 'meteor/std:accounts-ui';
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY',
-  loginPath: '/',
-  minimumPasswordLength: 1
-  // onSignedInHook: () => FlowRouter.go('/lobby'),
-  // onSignedOutHook: () => FlowRouter.go('/')
-});
+// import {Accounts} from 'meteor/accounts-base';
+// console.log(Accounts);
+// Accounts.ui.config({
+//   passwordSignupFields: 'USERNAME_ONLY',
+//   loginPath: '/',
+//   minimumPasswordLength: 1
+// });
 
 export default function (injectDeps, {FlowRouter}) {
   const MainLayoutCtx = injectDeps(MainLayout);
