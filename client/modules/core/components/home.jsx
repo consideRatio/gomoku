@@ -33,6 +33,7 @@ export default class Home extends React.Component {
         </div>
         <div className="mdl-card__supporting-text">
           <p>Gomoku is easy, just connect five of your stones in a line! Play against someone now!</p>
+          <p>This webpage was developed over seven days as a demo for a job application. The source code is available at <a href="https://github.com/consideRatio/gomoku">GitHub</a>.</p>
         </div>
       </div>
     );

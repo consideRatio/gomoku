@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MainLayout from './components/main_layout';
-import About from './components/about';
 import Lobby from './components/lobby';
 
 import Home from './containers/home';
@@ -29,15 +28,6 @@ export default function (injectDeps, {FlowRouter}) {
     action() {
       mount(MainLayoutCtx, {
         content: () => (<Home />)
-      });
-    }
-  });
-
-  FlowRouter.route('/about', {
-    name: 'about',
-    action() {
-      mount(MainLayoutCtx, {
-        content: () => (<About />)
       });
     }
   });

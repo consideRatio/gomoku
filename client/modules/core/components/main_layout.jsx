@@ -8,7 +8,6 @@ export default ({content = () => null}) => (
         <div className="mdl-layout-spacer"></div>
         <nav className="mdl-navigation mdl-layout--large-screen-only">
           <a className="mdl-navigation__link" href="/">Home</a>
-          <a className="mdl-navigation__link" href="/about">About</a>
           <a className="mdl-navigation__link" href="/lobby">Lobby</a>
           <a className="mdl-navigation__link" href="/game/571a3cb104c8b90f0f14cbd6">A game</a>
         </nav>

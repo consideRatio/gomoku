@@ -3,7 +3,10 @@
 
 $page-padding: 16px;
 
-
+.list-entry-button {
+    margin: 0 $page-padding 0 0 !important;
+    float: left;
+}
 
 .demo-card-wide.mdl-card {
     width: 100%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import User from './user';
+import UserListEntry from './user_list_entry';
 
 export default class UserList extends React.Component {
   render() {
@@ -9,9 +9,9 @@ export default class UserList extends React.Component {
           <h2 className="mdl-card__title-text">User list</h2>
         </div>
         <div className="mdl-card__supporting-text">
-          <ul>
+          <ul className="mdl-list">
             {this.props.users.map((user) => (
-              <User key={user._id} user={user} />
+              <UserListEntry key={user._id} user={user} />
             ))}
           </ul>
         </div>

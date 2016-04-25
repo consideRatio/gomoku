@@ -5,7 +5,7 @@ import {check} from 'meteor/check';
 export default function () {
   Meteor.publish('challenges.includingActiveUser', function () {
     return Challenges.find({
-      $or [
+      $or: [
         {'userChallenging._id': Meteor.user()._id},
         {'userChallenged._id': Meteor.user()._id}
       ]
