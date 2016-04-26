@@ -29,7 +29,8 @@ export const composer = ({context}, onData) => {
 
 export const depsMapper = (context, actions) => {
   return {
-    context: () => context
+    context: () => context,
+    actions
   }
 };
 

@@ -1,24 +1,19 @@
 import {useDeps, composeAll, composeWithTracker, compose} from 'mantra-core';
 
-import Game from '../components/game.jsx';
+import MainLayout from '../components/main_layout.jsx';
 
 export const composer = ({context}, onData) => {
   const {Meteor, Collections, FlowRouter} = context();
-  const gameId = FlowRouter._current.params._id;
 
   // Subscribe to user data!
-  if (Meteor.subscribe('games.single', gameId).ready()) {
-    const game = Collections.Games.findOne({_id: gameId});
+  if (Meteor.subscribe('challenges.includingActiveUser', Meteor.userId()).ready()) {
+    const challenges = Collections.Challenges.find({}).fetch();
 
     // Loads data into the contained components 'props'
-    onData(null, {game});
+    onData(null, {challenges});
   } else {
-    onData(); // Loading if no results were returned
-    // onData(null, {});
+    onData(null, {});
   }
-
-  // Return a container disposal function
-  return () => {};
 };
 
 export const depsMapper = (context, actions) => ({
@@ -29,4 +24,4 @@ export const depsMapper = (context, actions) => ({
 export default composeAll(
   composeWithTracker(composer),
   useDeps(depsMapper)
-)(Game);
+)(MainLayout);

@@ -11,7 +11,7 @@ export default class UserList extends React.Component {
         <div className="mdl-card__supporting-text">
           <ul className="mdl-list">
             {this.props.users.map((user) => (
-              <UserListEntry key={user._id} user={user} />
+              <UserListEntry key={user._id} user={user} challenge={this.props.actions.challenges.new}/>
             ))}
           </ul>
         </div>

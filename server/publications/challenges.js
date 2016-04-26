@@ -6,8 +6,8 @@ export default function () {
   Meteor.publish('challenges.includingActiveUser', function () {
     return Challenges.find({
       $or: [
-        {'userChallenging._id': Meteor.user()._id},
-        {'userChallenged._id': Meteor.user()._id}
+        {'hero._id': this.userId},
+        {'villian._id': this.userId}
       ]
     });
   });

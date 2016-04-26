@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 export default class GameListEntry extends React.Component {
   componentDidMount() {
@@ -12,11 +13,11 @@ export default class GameListEntry extends React.Component {
     return (
       <li className="mdl-list__item mdl-list__item--two-line">
         <span className="mdl-list__item-primary-content">
-          <button ref="btnViewGame" className="list-entry-button mdl-list__item-secondary-action mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
+          <a ref="btnViewGame" href={`/game/${this.props.game._id}`} className="list-entry-button mdl-list__item-secondary-action mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
             <i className="material-icons">remove_red_eye</i>
-          </button>
-          <span>{this.props.game.player1} vs {this.props.game.player2}</span>
-          <span className="mdl-list__item-sub-title">Game info...</span>
+          </a>
+          <span>{this.props.game.players[0].username} vs {this.props.game.players[1].username}</span>
+          <span className="mdl-list__item-sub-title">{`Started: ${moment(this.props.game.startDate).fromNow()}`}</span>
         </span>
       </li>
     );

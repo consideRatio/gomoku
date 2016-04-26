@@ -8,5 +8,5 @@ export default {
   },
   leave({Meteor}, gameId, black) {
     console.log("leave", gameId, black);
-  },
+  }
 }

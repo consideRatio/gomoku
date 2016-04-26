@@ -1,8 +1,8 @@
 import React from 'react';
 
-import MainLayout from './components/main_layout';
 import Lobby from './components/lobby';
 
+import MainLayout from './containers/main_layout';
 import Home from './containers/home';
 import Game from './containers/game';
 

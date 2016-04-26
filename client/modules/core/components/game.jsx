@@ -13,24 +13,27 @@ export default class Game extends React.Component {
     const game = this.props.game;
 
     return (
-      <div>
-        <div className="container">
-          <div className="game-header">
-            <span className="player1">{game.players[0].username}</span>
-            <span className="player2">{game.players[1].username}</span>
+      <div className="mdl-grid">
+        <div className="mdl-cell mdl-cell--12-col">
+          <div className="mdl-card mdl-shadow--2dp">
+            <div className="mdl-card__title">
+              <h2 className="mdl-card__title-text">
+                {game.players[0].username} vs {game.players[1].username}
+              </h2>
+            </div>
+            <div>
+              <Board
+                size={19}
+                moves={game.moves}
+                onClick={this.props.actions.games.makeMove.bind(undefined, game._id)}
+              />
+            </div>
           </div>
         </div>
-
-        <Board
-          size={19}
-          moves={game.moves}
-          onClick={this.props.makeMove.bind(undefined, game._id)}
-        />
       </div>
     );
   }
 }
-
 
 // getDateFormatted (date) {
 //     Moment.locale('en');

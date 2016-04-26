@@ -8,9 +8,9 @@ $page-padding: 16px;
     float: left;
 }
 
-.demo-card-wide.mdl-card {
-    width: 100%;
-    min-height: 0;
+.mdl-card {
+    width: 100% !important;
+    min-height: 0 !important;
 }
 
 .mdl-textfield {
@@ -66,9 +66,9 @@ $gutter-width: $col-width * $gutter-relative-width;
 
 .gomoku-board {
     // WARNING: A hack, vw is a messy unit...
-    width: calc(100vw - 2 * #{$page-padding});
-    height: calc(100vw - 2 * #{$page-padding});
-    margin: 0 auto;
+    width: calc(90vw);
+    height: calc(90vw);
+    margin: 0 auto $page-padding;
 
     background-color: $color-border;
 

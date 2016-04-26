@@ -27,7 +27,7 @@ export default class Home extends React.Component {
 
   renderWelcome() {
     return (
-      <div className="demo-card-wide mdl-card mdl-shadow--2dp">
+      <div className="mdl-card mdl-shadow--2dp">
         <div className="mdl-card__title">
           <h2 className="mdl-card__title-text">Welcome</h2>
         </div>
@@ -47,7 +47,7 @@ export default class Home extends React.Component {
 
   renderAccountBase(content) {
     return (
-      <div className="demo-card-wide mdl-card mdl-shadow--2dp">
+      <div className="mdl-card mdl-shadow--2dp">
         <div className="mdl-card__title">
           <h2 className="mdl-card__title-text">Account</h2>
         </div>
@@ -96,24 +96,25 @@ export default class Home extends React.Component {
 
   renderSignOut() {
     return (
-      <form onSubmit={this.onSignOut.bind(this)}>
-        <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ref="btnSignOut">
-          Sign out
-        </button>
-      </form>
+      <div>
+        <p>You are signed in as {Meteor.user().username}.</p>
+        <form onSubmit={this.onSignOut.bind(this)}>
+          <button type="submit" className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" ref="btnSignOut">
+            Sign out
+          </button>
+        </form>
+      </div>
     );
   }
 
   render() {
     return (
-      <div className="container">
-        <div className="mdl-grid">
-          <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-            {this.renderWelcome()}
-          </div>
-          <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-            {this.renderAccount()}
-          </div>
+      <div className="mdl-grid">
+        <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+          {this.renderWelcome()}
+        </div>
+        <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+          {this.renderAccount()}
         </div>
       </div>
     );

@@ -1,77 +1,113 @@
 import {Challenges, Games, Users} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
-import {random} from 'meteor/random';
+import {Random} from 'meteor/random';
 
 export default function () {
   Meteor.methods({
-    'challenges.new'(userIdChallenged) {
-      console.log("Registering NEW challenge.");
+    'challenges.new'(villianId) {
+      const hero = Meteor.user();
+      check(hero, Object);
 
-      const userChallenging = Meteor.user();
-      check(userChallenging, Object);
-
-      const userChallenged = Challenges.findOne({_id: userIdChallenged});
-      check(userChallenged, Object);
+      const villian = Users.findOne({_id: villianId});
+      check(villian, Object);
 
       // TODO: Current / Challenged user not busy
+      // TODO: Ensure not another challenge to the user is sent already
 
-      const _id = `${userChallenging._id}${userChallenged._id}`;
-
+      const challengeId = Random.id();
       Challenges.insert({
-        _id,
+        _id: challengeId,
         challengeDate: new Date(),
-        userChallenging,
-        userChallenged
+        hero,
+        villian,
+        status: "pending"
       });
 
+      console.log("Method: challenges.new - Challenge inserted");
+
       // Set interval -> remove challenge
-      setTimeout(() => {
-        console.log("Removed challenge due to timeout. 'this' follows:", this);
-        Challenges.remove({_id});
+      const serverTimerToken = Meteor.setTimeout(() => {
+        const updateCount = Challenges.update(
+          {_id: challengeId, status: "pending"},
+          {$set: {status: "timeout"}
+        });
+        if (updateCount)
+          console.log("Method: challenges.new / timeout callback - Challenge timeout");
       }, 10*1000);
+
+      return;
     }
   });
 
+
+
   Meteor.methods({
-    'challenges.respond'(challengeId) {
-      console.log("Responding to challenge.");
+    'challenges.respond'(challengeId, accepted) {
+      console.log("Method: challenges.respond");
 
-      // Logged in and actual user
-      const userResponding = Meteor.user();
-      check(userResponding, Object);
+      let gameId = null;
 
-      // Have challenge to respond to
-      const challenge = Challenges.findOne({_id: challengeId});
+      // Logged in
+      const villian = Meteor.user();
+      check(villian, Object);
+
+      // Has been challenged
+      const challenge = Challenges.findOne({_id: challengeId, 'villian._id': villian._id});
       check(challenge, Object);
 
-      if (userResponding._id === challenge.userChallenged._id) {
-        // TODO: Current / Challenged user not busy
-        // --- Not in active game
+      // TODO: Current / Challenged user not busy
 
-        let players = null;
-        if (Random.choice([0,1])) {
-          players = [userResponding, challenge.userChallenging];
-        } else {
-          players = [challenge.userChallenging, userResponding];
-        }
-
+      if (accepted) {
         // Create new game
-        const gameId = Random.id();
+        gameId = Random.id();
         Games.insert({
           _id: gameId,
           startDate: new Date(),
           moves: [],
-          players
+          players: Random.choice([0,1]) ? [villian, challenge.hero] : [challenge.hero, villian]
         });
 
-        // Remove challenge
-        Challenges.remove({_id: challenge._id});
-
-        return; // TODO: Return something?
+        console.log("Method: challenges.respond - Accepted - Game inserted, challenge removed");
       } else {
-        return; // TODO: Return something else?
+        console.log("Method: challenges.respond - Rejected - Challenge removed");
       }
+
+      Challenges.update(
+        {_id: challengeId},
+        {$set: {
+          status: accepted ? "accepted" : "rejected",
+          gameId: gameId
+        }
+      });
+
+      const serverTimerToken = Meteor.setTimeout(() => {
+        const removeCount = Challenges.remove({_id: challengeId});
+        if (removeCount)
+          console.log("Method: challenges.respond / timeout callback - Challenge cleaned up");
+      }, 60*1000);
+
+      return gameId; // Return the gameId
+    }
+  });
+
+
+
+  Meteor.methods({
+    'challenges.acknowledge'(challengeId) {
+      console.log("Method: challenges.acknowledge");
+
+      // Logged in
+      const hero = Meteor.user();
+      check(hero, Object);
+
+      // Has challenged someone
+      const challenge = Challenges.findOne({_id: challengeId, 'hero._id': hero._id});
+      check(challenge, Object);
+
+      Challenges.remove({_id: challengeId});
+
+      return challenge.gameId; // Return the gameId
     }
   });
 }
