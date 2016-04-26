@@ -17,14 +17,17 @@ standard-minifier-js    # JS minifier run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-# autopublish             # Publish all data to the clients (for prototyping)
-# insecure                # Allow all DB writes from clients (for prototyping)
+# Added by me...
+# --- Development
+meteortoys:allthings    # Development tool (CMD+M)
 
-random
-check
-accounts-password
+# --- Data checks
+check                   #
+aldeed:collection2      # Enforces collection schema
 
-kadira:flow-router
-meteortoys:allthings
-aldeed:collection2
-fourseven:scss@=3.4.2
+# --- Other
+random                  # Generates collection _id's
+accounts-password       # Stores passwords with bcrypt and includes account-base
+kadira:flow-router      # Single page app routing
+fourseven:scss@=3.4.2   # SASS Auto compilation
+mizzao:user-status      # User documents augmented with a status field

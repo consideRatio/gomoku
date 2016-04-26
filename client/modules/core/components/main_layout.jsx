@@ -25,28 +25,26 @@ export default class MainLayout extends React.Component {
       Task: To display challenge dialogs
     */
 
-    const pendingChallenge = this.props.challenges.find((c) => {
+    // --- Section: React to incomming challenges
+    const incommingChallenge = this.props.challenges.find((c) => {
       return c.status === "pending" && c.villian._id === Meteor.userId();
     });
 
     // Are a challenge dialog already open?
     if (this.state.challengeConsidered) {
-      if (!pendingChallenge) {
+      if (!incommingChallenge) {
         this.hideChallengeDialog();
       }
     } else {
-      if (pendingChallenge) {
-        this.showChallengeDialog(pendingChallenge);
+      if (incommingChallenge) {
+        this.showChallengeDialog(incommingChallenge);
       }
     }
 
+    // --- Section: React to challenge responses
     const answeredChallenge = this.props.challenges.find((c) => {
       return c.status !== "pending" && c.hero._id === Meteor.userId();
     });
-
-    console.log("Component: MainLayout - handleChallenges()", !!answeredChallenge);
-    console.log(answeredChallenge);
-    console.log(this.props.challenges);
 
     if (answeredChallenge) {
       this.props.actions.challenges.acknowledge(answeredChallenge._id);
@@ -58,9 +56,9 @@ export default class MainLayout extends React.Component {
     this.setState({challengeConsidered: null});
   }
 
-  showChallengeDialog(pendingChallenge) {
+  showChallengeDialog(incommingChallenge) {
     this.refs.diagChallengeResponse.showModal();
-    this.setState({challengeConsidered: pendingChallenge});
+    this.setState({challengeConsidered: incommingChallenge});
   }
 
   challengeResponseHandler(accepted) {
@@ -74,12 +72,16 @@ export default class MainLayout extends React.Component {
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header className="mdl-layout__header">
           <div className="mdl-layout__header-row">
-            <span href="/" className="mdl-layout-title">Gomoku</span>
+            <span href="/" className="mdl-layout-title">
+              {Meteor.user() ?
+                `Gomoku (${Meteor.user().username})` :
+                "Gomoku"
+              }
+            </span>
             <div className="mdl-layout-spacer"></div>
             <nav className="mdl-navigation mdl-layout--large-screen-only">
               <a className="mdl-navigation__link" href="/">Home</a>
               <a className="mdl-navigation__link" href="/lobby">Lobby</a>
-              <a className="mdl-navigation__link" href="/game/571a3cb104c8b90f0f14cbd6">A game</a>
             </nav>
           </div>
         </header>

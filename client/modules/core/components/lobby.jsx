@@ -4,11 +4,14 @@ import GameList from '../containers/game_list.js';
 
 const Lobby = () => (
   <div className="mdl-grid">
-    <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+    <div className="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
       <UserList />
     </div>
-    <div className="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
-      <GameList />
+    <div className="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
+      <GameList public={false} />
+    </div>
+    <div className="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet">
+      <GameList public={true} />
     </div>
   </div>
 );

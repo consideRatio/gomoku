@@ -8,19 +8,20 @@ export const composer = ({context}, onData) => {
   const {Meteor, Collections} = context();
 
   // Subscribe to user data!
-  if (Meteor.subscribe('users.allUserSummaries').ready()) {
+  if (Meteor.subscribe('users.allActiveUsers').ready()) {
     const query = {
-      _id: {$ne: Meteor.userId()}
+      _id: {$ne: Meteor.userId()},
+      'status.online': true
     };
     const options = {
-      sort: {username: 1},
+      sort: {'status.idle': 1, username: 1},
     };
     const users = Collections.Users.find(query, options).fetch();
 
+    // Loads data into the contained components 'props'
     onData(null, {users});
   } else {
-    onData(); // Loading if no results were returned
-    // onData(null, {});
+    onData(null, {users: []});
   }
 
   // Return a container disposal function

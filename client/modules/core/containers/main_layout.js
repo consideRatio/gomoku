@@ -12,7 +12,7 @@ export const composer = ({context}, onData) => {
     // Loads data into the contained components 'props'
     onData(null, {challenges});
   } else {
-    onData(null, {});
+    onData(null, {challenges: []});
   }
 };
 

@@ -3,16 +3,20 @@ import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
 export default function () {
-  Meteor.publish('users.allUserSummaries', function () {
+  Meteor.publish('users.allActiveUsers', function () {
     return Users.find(
       {
-        // Publish all users
-        // TODO: Limit to active users
+        // Publish all active users
+        'status.online': true
       },
       {
         // But only the essential information
-        // TODO: Include user status
-        fields: {_id: true, username: true}
+        fields: {
+          _id: true,
+          username: true,
+          'status.online': true,
+          'status.idle': true
+        }
       }
     );
   });

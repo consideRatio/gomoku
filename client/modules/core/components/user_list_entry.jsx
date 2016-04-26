@@ -9,14 +9,16 @@ export default class UserListEntry extends React.Component {
   }
 
   render() {
+    const userState = this.props.user.status.idle ? "Idle" : "Active";
+
     return (
       <li className="mdl-list__item mdl-list__item--two-line">
         <span className="mdl-list__item-primary-content">
           <button onClick={this.props.challenge.bind(undefined, this.props.user._id)} ref="btnChallenge" className="list-entry-button mdl-list__item-secondary-action mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">
-            <i className="material-icons">pets</i>
+            <i className="material-icons">flash_on</i>
           </button>
           <span>{this.props.user.username}</span>
-          <span className="mdl-list__item-sub-title">TODO: Available / In game</span>
+          <span className="mdl-list__item-sub-title">{userState}</span>
         </span>
       </li>
     );

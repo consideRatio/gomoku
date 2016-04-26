@@ -8,8 +8,8 @@ Try a live demonstration at [gomoku-demo.herokuapp.com](https://gomoku-demo.hero
 
 * [Meteor](https://www.meteor.com/) (1.3.2.4)
     * [FlowRouter](https://github.com/kadirahq/flow-router) (2.11.0)
-* [React](https://facebook.github.io/react/) (0.14.7)
-* [Mantra](https://kadirahq.github.io/mantra/) (0.2.0)
+* [React](https://facebook.github.io/react/) (0.14.7) (Overkill - but I got to learn)
+* [Mantra](https://kadirahq.github.io/mantra/) (0.2.0) (Overkill - but I got to learn)
     * [Mantra-CLI](https://github.com/mantrajs/mantra-cli) (0.3.11)
     * [react-komposer](https://github.com/kadirahq/react-komposer)
     * [react-mounter](https://github.com/kadirahq/react-mounter)
@@ -38,8 +38,9 @@ Try a live demonstration at [gomoku-demo.herokuapp.com](https://gomoku-demo.hero
     * [Git](https://www.codeschool.com/learn/git)
     * [HTML5 / CSS3 / SVG / SASS / Design](https://www.codeschool.com/learn/html-css)
 
-## Personal challanges faced
-* Implementing `Mantra` project architecture using `react-komposer`, `react-mounter`, `react-simple-di`, and how they play along with meteors `Tracker` and trackable variables such as `Meteor.user()`.
+## Challanges faced
+* Implementing `Mantra` project architecture using `react-komposer`, `react-mounter`, `react-simple-di`, and learning how they play along with meteors `Tracker` and trackable variables such as `Meteor.user()`.
 * Implementing `Material Design Lite` in a `React` application ([Community interaction](https://github.com/google/material-design-lite/issues/4274)).
-* Implementing user handling with `accounts-base` and `accounts-password`
+* Implmenting basic login using `accounts-base` and `accounts-password`
+* Handling an increasing amount of states (user login / challenges)
 * Designing a Gomoku-board with HTML and SASS with minor animations.
