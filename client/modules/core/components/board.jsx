@@ -16,7 +16,9 @@ export default class Board extends React.Component {
 
       if (moveIndex !== -1) {
         const move = this.props.moves[moveIndex];
-        arr.push((<Intersection key={i} onClick={this.props.onClick.bind(undefined, i)} move={move} moveIndex={moveIndex} />));
+        const winningStone = this.props.winningStones ? this.props.winningStones.find((m) => move.intersection == m.intersection) : false;
+
+        arr.push((<Intersection key={i} onClick={this.props.onClick.bind(undefined, i)} move={move} winningStone={winningStone} moveIndex={moveIndex} />));
       } else {
         arr.push((<Intersection key={i} onClick={this.props.onClick.bind(undefined, i)}/>));
       }

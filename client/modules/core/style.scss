@@ -3,6 +3,8 @@
 
 $page-padding: 16px;
 
+$secondary-color: rgb(255,110,64);
+
 .list-entry-button {
     margin: 0 $page-padding 0 0 !important;
     float: left;
@@ -49,6 +51,7 @@ $cols: 19;
 $color-background: lighten(rgb(121,85,72), 25%);
 $color-border: darken($color-background, 75%);
 $color-stone-border: #333;
+$color-stone-border-winner: #0f0;
 $color-stone-black: #000;
 $color-stone-white: #fff;
 
@@ -62,6 +65,28 @@ $gutter-width: $col-width * $gutter-relative-width;
 @keyframes pulsating-background {
     0%, 100% { background-color: lighten($color-background, 75%); },
     50% { background-color: $color-background; }
+}
+
+@keyframes winning-stone-animation {
+    0%, 100% { opacity: 1; },
+    50% { opacity: 0; }
+}
+
+.mdl-card__title-text {
+    transition: all 0.5s;
+}
+
+.game-title {
+    justify-content: center;
+}
+
+.stone.stone-title {
+    width: 30px;
+    height: 30px;
+}
+
+.active-player {
+    text-shadow: 2px 1px 2px $secondary-color;
 }
 
 .gomoku-board {
@@ -102,6 +127,11 @@ $gutter-width: $col-width * $gutter-relative-width;
         &.stone {
             use {
                 opacity: 1;
+            }
+        }
+        &.stone.winningStone {
+            use {
+                animation: winning-stone-animation 1s infinite ease-in-out;
             }
         }
     }

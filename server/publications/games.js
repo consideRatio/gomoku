@@ -12,9 +12,7 @@ export default function () {
       {
         fields: {
           // Pass only relevant information
-          _id: true,
-          startDate: true,
-          players: true
+          moves: false
         }
       }
     );

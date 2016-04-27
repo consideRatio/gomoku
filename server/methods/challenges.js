@@ -63,7 +63,7 @@ export default function () {
         gameId = Random.id();
         Games.insert({
           _id: gameId,
-          startDate: new Date(),
+          createdAt: new Date(),
           moves: [],
           players: Random.choice([0,1]) ? [villian, challenge.hero] : [challenge.hero, villian]
         });

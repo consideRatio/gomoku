@@ -11,10 +11,12 @@ export const composer = ({context, public}, onData) => {
     // None of the players is the hero
 
     const privateQuery = {
-      'players': {$elemMatch: {_id: Meteor.userId()}}
+      'players': {$elemMatch: {_id: Meteor.userId()}},
+      state: {$ne: "finished"}
     };
     const publicQuery = {
-      'players': {$not: {$elemMatch: {_id: Meteor.userId()}}}
+      'players': {$not: {$elemMatch: {_id: Meteor.userId()}}},
+      state: {$ne: "finished"}
     };
 
     const query = public ? publicQuery : privateQuery;

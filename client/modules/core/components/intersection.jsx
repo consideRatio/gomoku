@@ -5,7 +5,8 @@ import cn from 'classnames';
 export default class Intersection extends React.Component {
   render() {
     const svgClassNames = cn({
-      stone: !!this.props.move
+      stone: !!this.props.move,
+      winningStone: this.props.winningStone
     });
 
     return (
