@@ -8,8 +8,8 @@ Try a live demonstration at [gomoku-demo.herokuapp.com](https://gomoku-demo.hero
 
 * [Meteor](https://www.meteor.com/) (1.3.2.4)
     * [FlowRouter](https://github.com/kadirahq/flow-router) (2.11.0)
-* [React](https://facebook.github.io/react/) (0.14.7) (Overkill - but I got to learn)
-* [Mantra](https://kadirahq.github.io/mantra/) (0.2.0) (Overkill - but I got to learn)
+* [React](https://facebook.github.io/react/) (0.14.7) (Overkill)
+* [Mantra](https://kadirahq.github.io/mantra/) (0.2.0) (Overkill)
     * [Mantra-CLI](https://github.com/mantrajs/mantra-cli) (0.3.11)
     * [react-komposer](https://github.com/kadirahq/react-komposer)
     * [react-mounter](https://github.com/kadirahq/react-mounter)
@@ -39,8 +39,9 @@ Try a live demonstration at [gomoku-demo.herokuapp.com](https://gomoku-demo.hero
     * [HTML5 / CSS3 / SVG / SASS / Design](https://www.codeschool.com/learn/html-css)
 
 ## Challanges faced
+* Utilizing `React` for the first time.
 * Implementing `Mantra` project architecture using `react-komposer`, `react-mounter`, `react-simple-di`, and learning how they play along with meteors `Tracker` and trackable variables such as `Meteor.user()`.
 * Implementing `Material Design Lite` in a `React` application ([Community interaction](https://github.com/google/material-design-lite/issues/4274)).
-* Implmenting basic login using `accounts-base` and `accounts-password`
-* Handling an increasing amount of states (user login / challenges)
+* Implmenting basic login using `accounts-base` and `accounts-password` in React with dynamic DOM-rendering.
+* Handling an increasing amount of states (user login / challenges / game), time to learn Redux?
 * Designing a Gomoku-board with HTML and SASS with minor animations.
